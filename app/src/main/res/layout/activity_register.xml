@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/textregister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="111dp"
+        android:fontFamily="@font/segoebold"
+        android:text="REGISTER"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="14pt"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/textregister"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/loginrectangle"
+        android:fontFamily="@font/segoebold"
+        android:hint="USERNAME"
+        android:paddingLeft="20dp"
+        android:textColor="@color/cardview_light_background"
+        android:textColorHint="@color/cardview_light_background"
+        android:textSize="14dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/username"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/loginrectangle"
+        android:fontFamily="@font/segoebold"
+        android:inputType="textPassword"
+        android:hint="PASSWORD"
+        android:paddingLeft="20dp"
+        android:textColor="@color/cardview_light_background"
+        android:textColorHint="@color/cardview_light_background"
+        android:textSize="14dp" />
+
+    <ImageView
+        android:id="@+id/register"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="-10dp"
+        android:layout_alignEnd="@+id/password"
+        android:src="@drawable/registerbutton"/>
+
+</RelativeLayout>
