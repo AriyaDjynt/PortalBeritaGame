@@ -5,8 +5,21 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_centerInParent="true"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:max="100"
+        android:layout_below="@id/field_password"
+        android:backgroundTint="#000000"
+        android:indeterminateTint="#FF9800"
+        android:layout_marginTop="1dp"/>
+
     <TextView
-        android:id="@+id/textregister"
+        android:id="@+id/txt_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,10 +32,10 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/field_username"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/textregister"
+        android:layout_below="@+id/txt_register"
         android:layout_centerInParent="true"
         android:layout_marginTop="64dp"
         android:background="@drawable/loginrectangle"
@@ -34,10 +47,10 @@
         android:textSize="14dp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/field_password"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/field_username"
         android:layout_centerInParent="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/loginrectangle"
@@ -50,12 +63,12 @@
         android:textSize="14dp" />
 
     <ImageView
-        android:id="@+id/register"
+        android:id="@+id/btn_register"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_below="@+id/password"
+        android:layout_below="@+id/field_password"
         android:layout_marginTop="-10dp"
-        android:layout_alignEnd="@+id/password"
+        android:layout_alignEnd="@+id/field_password"
         android:src="@drawable/registerbutton"/>
 
 </RelativeLayout>
