@@ -1,5 +1,6 @@
 package com.hendrysa.portalberitagame.ui.platform;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,7 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.hendrysa.portalberitagame.AdapterRecycler;
+import com.hendrysa.portalberitagame.ModelRecycler;
 import com.hendrysa.portalberitagame.R;
 import com.hendrysa.portalberitagame.ui.genre.Action;
 import com.hendrysa.portalberitagame.ui.genre.Adventure;
@@ -16,7 +20,16 @@ import com.hendrysa.portalberitagame.ui.genre.Shooting;
 import com.hendrysa.portalberitagame.ui.genre.Simulation;
 import com.hendrysa.portalberitagame.ui.genre.Strategy;
 
+import java.util.List;
+
 public class Nintendo extends AppCompatActivity {
+    //RecyclerView
+    Context context;
+    RecyclerView recyclerView;
+    androidx.recyclerview.widget.LinearLayoutManager LinearLayoutManager;
+    List<ModelRecycler> list;
+    ModelRecycler modelRecycler;
+    AdapterRecycler adapterRecycler;
 
     String platform = "Nintendo";
     TextView txt_platform;
