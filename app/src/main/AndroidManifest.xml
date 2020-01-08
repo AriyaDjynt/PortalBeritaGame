@@ -12,9 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
+        <activity android:name=".ui.splash.Splashscreen"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" android:label="@string/app_name" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".ui.register.Register" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".ui.platform.Playstation" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".ui.platform.Pc" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
