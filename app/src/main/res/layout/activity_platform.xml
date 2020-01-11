@@ -105,10 +105,10 @@
             </HorizontalScrollView>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:id="@+id/recyclerview">
+                android:layout_marginTop="18dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 

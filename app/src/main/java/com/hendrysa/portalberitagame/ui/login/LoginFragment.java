@@ -3,6 +3,7 @@ package com.hendrysa.portalberitagame.ui.login;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import androidx.fragment.app.Fragment;
 import com.hendrysa.portalberitagame.JSONParser;
 import com.hendrysa.portalberitagame.MainActivity;
 import com.hendrysa.portalberitagame.R;
+import com.hendrysa.portalberitagame.Session;
 import com.hendrysa.portalberitagame.ui.register.Register;
 
 public class LoginFragment extends Fragment {
@@ -29,10 +31,9 @@ public class LoginFragment extends Fragment {
     EditText field_username, field_password;
     ImageView btn_login;
     ProgressBar progress;
-    String url = "http://hendrysa.ga:443/project/uasandroid/login.php";
+    String url = "http://hendrysa.ga/project/uasandroid/login.php";
     private String username, password;
-
-
+    private Session session;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -50,6 +51,7 @@ public class LoginFragment extends Fragment {
         field_password = view.findViewById(R.id.field_password);
         progress = view.findViewById(R.id.progressbar);
         progress.setVisibility(View.GONE);
+        session = new Session(getActivity());
 
         btn_register.setOnClickListener(new View.OnClickListener()
         {
@@ -93,11 +95,13 @@ public class LoginFragment extends Fragment {
             List<NameValuePair> data = new ArrayList<>();
             data.add(new BasicNameValuePair("username", username));
             data.add(new BasicNameValuePair("password", password));
+            JSONObject json = jsonParser.makeHttpRequest(url, "POST", data);
 
             try
             {
-                JSONObject json = jsonParser.makeHttpRequest(url, "POST", data);
                 int success = json.getInt("success");
+                final String uname = json.getString("username");
+                final String u_id = json.getString("user_id");
                 if(success == 1)
                 {
                     getActivity().runOnUiThread(new Runnable()
@@ -106,6 +110,7 @@ public class LoginFragment extends Fragment {
                        public void run()
                        {
                            toast("Login Berhasil");
+                           session.setLogin(uname, u_id);
                            Intent i = new Intent(getActivity(), MainActivity.class);
                            getActivity().finish();
                            startActivity(i);
@@ -126,6 +131,7 @@ public class LoginFragment extends Fragment {
             }
             catch(Exception e)
             {
+                Log.d("hendrysa", e.getMessage());
                 getActivity().runOnUiThread(new Runnable()
                 {
                     @Override

@@ -11,25 +11,25 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/hellotext"
+        android:id="@+id/txt_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/segoebold"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="50dp"
-        android:text="HELLO"
+        android:text="Hello"
         android:textColor="@color/cardview_light_background"
         android:textSize="12pt"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/usernametext"
+        android:id="@+id/txt_logged_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/segoebold"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="10dp"
-        android:text="Ariya Djayanto "
+        android:text="@string/logged_user"
         android:textColor="@color/cardview_light_background"
         android:textSize="10pt"
         android:textStyle="bold" />
