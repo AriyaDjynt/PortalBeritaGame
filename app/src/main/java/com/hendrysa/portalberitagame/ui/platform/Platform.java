@@ -2,7 +2,9 @@ package com.hendrysa.portalberitagame.ui.platform;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,10 +14,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hendrysa.portalberitagame.AdapterRecycler;
+import com.hendrysa.portalberitagame.JSONParser;
 import com.hendrysa.portalberitagame.ModelRecycler;
 import com.hendrysa.portalberitagame.R;
 import com.hendrysa.portalberitagame.Session;
 import com.hendrysa.portalberitagame.ui.genre.Genre;
+import com.hendrysa.portalberitagame.ui.home.HomeFragment;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +40,7 @@ public class Platform extends AppCompatActivity {
     String platform;
     TextView txt_platform;
     ImageView btn_action, btn_simulation, btn_strategy, btn_adventure, btn_shooting, btn_fighting;
+    String url = "http://hendrysa.ga:443/project/uasandroid/platform.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +50,12 @@ public class Platform extends AppCompatActivity {
         //Recycler
         recyclerView = findViewById(R.id.recyclerview);
         LinearLayoutManager = new LinearLayoutManager(this);
+        context = this;
         list = new ArrayList<>();
-        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(LinearLayoutManager);
-        //modelRecycler = new ModelRecycler("https://assets-a2.kompasiana.com/statics/crawl/5559a3700423bd29288b4567.jpeg?t=o&v=350");
-        //list.add(modelRecycler);
-        adapterRecycler = new AdapterRecycler(list, this);
-        recyclerView.setAdapter(adapterRecycler);
 
         platform = getIntent().getStringExtra("platform");
-
         txt_platform = findViewById(R.id.txt_platform);
         txt_platform.setText(platform);
 
@@ -115,5 +120,46 @@ public class Platform extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        new fetchdata().execute();
+    }
+
+    class fetchdata extends AsyncTask<String ,String ,String >
+    {
+
+        JSONParser jsonParser = new JSONParser();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            list.clear();
+        }
+
+        protected String doInBackground(String... args) {
+            List<NameValuePair> data = new ArrayList<>();
+            data.add(new BasicNameValuePair("platform", platform));
+            try
+            {
+                JSONObject json = jsonParser.makeHttpRequest(url, "POST", data);
+                for(int i = 0;i < json.length(); i++)
+                {
+                    String name = "berita"+String.valueOf(i);
+                    JSONObject obj = json.getJSONObject(name);
+                    modelRecycler = new ModelRecycler(obj.getString("Thumbnail"));
+                    list.add(modelRecycler);
+                }
+            }
+            catch(Exception e)
+            {
+                Log.d("hendrysa", "Exception : "+String.valueOf(e));
+            }
+            return null;
+        }
+        protected void onPostExecute(String e)
+        {
+            adapterRecycler = new AdapterRecycler(list, context);
+            recyclerView.setAdapter(adapterRecycler);
+            adapterRecycler.notifyDataSetChanged();
+        }
     }
 }

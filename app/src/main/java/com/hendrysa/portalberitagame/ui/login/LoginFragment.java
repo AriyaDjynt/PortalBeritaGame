@@ -31,7 +31,7 @@ public class LoginFragment extends Fragment {
     EditText field_username, field_password;
     ImageView btn_login;
     ProgressBar progress;
-    String url = "http://hendrysa.ga/project/uasandroid/login.php";
+    String url = "http://hendrysa.ga:443/project/uasandroid/login.php";
     private String username, password;
     private Session session;
 

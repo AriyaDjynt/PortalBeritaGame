@@ -7,10 +7,10 @@
 
     <ImageView
         android:id="@+id/linear_item"
-        android:layout_gravity="center"
-        android:layout_width="340dp"
-        android:layout_height="200dp"
-        android:orientation="vertical" />
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"/>
 
 
 </LinearLayout>

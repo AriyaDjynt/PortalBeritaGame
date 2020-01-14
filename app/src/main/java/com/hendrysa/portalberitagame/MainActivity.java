@@ -10,7 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TextView;
 
 import java.awt.font.TextAttribute;
@@ -27,7 +30,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         session = new Session(getApplicationContext());
-        txt_login = getResources().getString(R.string.logged_user);
+        NavigationView nav = findViewById(R.id.nav_view);
+        View header = nav.getHeaderView(0);
+        TextView txt_loggeduser = (TextView) header.findViewById(R.id.txt_logged_username);
+        txt_loggeduser.setText(session.getUsername());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+
+
 
         if(session.getStatus())
         {
