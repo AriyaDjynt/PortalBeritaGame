@@ -85,8 +85,6 @@ public class HomeFragment extends Fragment {
 
         session = new Session(getActivity());
         txt_logged = view.findViewById(R.id.txt_logged_username);
-        String uname = txt_logged.getText().toString();
-        txt_logged.setText(uname);
 
         btn_playstation.setOnClickListener(new View.OnClickListener() {
             @Override
