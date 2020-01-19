@@ -15,6 +15,6 @@
     <string name="menu_send">Send</string>
 
     <string name="platform"></string>
-    <string name="logged_user"></string>
-    <string name="login">Login</string>
+    <string name="logged_user">"</string>
+    <string name="login">Login"</string>
 </resources>

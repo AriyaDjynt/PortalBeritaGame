@@ -1,9 +1,7 @@
 package com.hendrysa.portalberitagame.ui.webview;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -14,7 +12,7 @@ import com.hendrysa.portalberitagame.R;
 public class Webview extends AppCompatActivity {
 
     String link;
-    WebView web;
+    WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +20,8 @@ public class Webview extends AppCompatActivity {
         setContentView(R.layout.activity_webview);
 
         link = getIntent().getStringExtra("link");
-        Log.d("hendrysa", link);
 
-
-        WebView webView = findViewById(R.id.canvas_webview);
+        webView = findViewById(R.id.canvas_webview);
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
@@ -37,4 +33,17 @@ public class Webview extends AppCompatActivity {
         webView.loadUrl(link);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        if(webView.canGoBack())
+        {
+            webView.goBack();
+        }
+        else
+            {
+                finish();
+            }
+    }
 }

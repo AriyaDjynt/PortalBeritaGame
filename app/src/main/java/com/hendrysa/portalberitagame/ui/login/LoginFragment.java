@@ -20,7 +20,6 @@ import org.json.JSONObject;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import com.hendrysa.portalberitagame.JSONParser;
-import com.hendrysa.portalberitagame.MainActivity;
 import com.hendrysa.portalberitagame.R;
 import com.hendrysa.portalberitagame.Session;
 import com.hendrysa.portalberitagame.ui.register.Register;
@@ -111,7 +110,7 @@ public class LoginFragment extends Fragment {
                        {
                            toast("Login Berhasil");
                            session.setLogin(uname, u_id);
-                           Intent i = new Intent(getActivity(), MainActivity.class);
+                           Intent i = new Intent(getActivity(), Admin.class);
                            getActivity().finish();
                            startActivity(i);
                        }

@@ -10,12 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hendrysa.portalberitagame.ui.webview.Webview;
+import com.squareup.picasso.Picasso;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -47,7 +45,9 @@ public class AdapterRecycler extends RecyclerView.Adapter<AdapterRecycler.modelV
     @Override
     public void onBindViewHolder(@NonNull final AdapterRecycler.modelViewHolder holder, final int position)
     {
-        Glide.with(this.context).load(myList.get(position).getImg()).thumbnail(0.5f).crossFade().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.row_img);
+        Picasso.with(holder.row_img.getContext()).cancelRequest(holder.row_img);
+        Picasso.with(holder.row_img.getContext()).load(myList.get(position).getImg()).into(holder.row_img);
+        //Glide.with(this.context).load(myList.get(position).getImg()).thumbnail(0.5f).crossFade().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.row_img);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

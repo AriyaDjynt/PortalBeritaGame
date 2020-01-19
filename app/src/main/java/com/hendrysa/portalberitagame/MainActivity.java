@@ -11,29 +11,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.TextView;
-
-import java.awt.font.TextAttribute;
 
 public class MainActivity extends AppCompatActivity {
-
-    String txt_login;
-    private Session session;
 
     private AppBarConfiguration mAppBarConfiguration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        session = new Session(getApplicationContext());
-        NavigationView nav = findViewById(R.id.nav_view);
-        View header = nav.getHeaderView(0);
-        TextView txt_loggeduser = (TextView) header.findViewById(R.id.txt_logged_username);
-        txt_loggeduser.setText(session.getUsername());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,24 +28,8 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_login, R.id.nav_myprofile, R.id.nav_aboutus).setDrawerLayout(drawer).build();
 
-
-        if(session.getStatus())
-        {
-            mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_home, R.id.nav_logout, R.id.nav_myprofile,
-                    R.id.nav_aboutus)
-                    .setDrawerLayout(drawer)
-                    .build();
-        }
-        else
-            {
-                mAppBarConfiguration = new AppBarConfiguration.Builder(
-                        R.id.nav_home, R.id.nav_login, R.id.nav_myprofile,
-                        R.id.nav_aboutus)
-                        .setDrawerLayout(drawer)
-                        .build();
-            }
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

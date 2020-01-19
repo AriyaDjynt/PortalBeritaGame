@@ -7,11 +7,7 @@
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/loginnavigation"
-            android:title="Login" />
-        <item
-            android:id="@+id/nav_logout"
-            android:icon="@drawable/loginnavigation"
-            android:title="Logout" />
+            android:title="Menu Admin" />
         <item
             android:id="@+id/nav_myprofile"
             android:icon="@drawable/myprofilenavigation"
