@@ -20,6 +20,7 @@ import com.hendrysa.portalberitagame.R;
 import com.hendrysa.portalberitagame.Session;
 import com.hendrysa.portalberitagame.ui.genre.Genre;
 import com.hendrysa.portalberitagame.ui.home.HomeFragment;
+import com.hendrysa.portalberitagame.ui.search.Search;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -39,7 +40,7 @@ public class Platform extends AppCompatActivity {
 
     String platform;
     TextView txt_platform;
-    ImageView btn_action, btn_simulation, btn_strategy, btn_adventure, btn_shooting, btn_fighting;
+    ImageView btn_action, btn_simulation, btn_strategy, btn_adventure, btn_shooting, btn_fighting, btn_search;
     String url = "http://hendrysa.ga:443/project/uasandroid/platform.php";
 
     @Override
@@ -65,6 +66,7 @@ public class Platform extends AppCompatActivity {
         btn_strategy = findViewById(R.id.btn_strategy);
         btn_shooting = findViewById(R.id.btn_shooting);
         btn_fighting = findViewById(R.id.btn_fighting);
+        btn_search = findViewById(R.id.search);
 
         btn_action.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +119,13 @@ public class Platform extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(), Genre.class);
                 i.putExtra("platform", platform);
                 i.putExtra("genre", "Fighting");
+                startActivity(i);
+            }
+        });
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Search.class);
                 startActivity(i);
             }
         });

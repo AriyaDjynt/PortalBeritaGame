@@ -9,10 +9,6 @@
             android:icon="@drawable/loginnavigation"
             android:title="Menu Admin" />
         <item
-            android:id="@+id/nav_myprofile"
-            android:icon="@drawable/myprofilenavigation"
-            android:title="My Profile" />
-        <item
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/aboutusnavigation"
             android:title="About Us" />
