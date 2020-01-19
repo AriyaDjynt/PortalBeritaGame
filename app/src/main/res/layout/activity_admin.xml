@@ -33,7 +33,7 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="12pt"
                     android:textStyle="bold"
-                    android:text="Menu Admin"/>
+                    android:text="MENU ADMIN"/>
 
             </LinearLayout>
 

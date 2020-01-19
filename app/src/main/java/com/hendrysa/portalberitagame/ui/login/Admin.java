@@ -15,7 +15,7 @@ public class Admin extends AppCompatActivity {
 
     Button btn_insert, btn_update;
     String url = "http://hendrysa.ga/project/uasandroid/";
-    String insert_url = url + "insert.php", update_url = url + "update.url";
+    String insert_url = url + "insert.php", update_url = url + "update.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

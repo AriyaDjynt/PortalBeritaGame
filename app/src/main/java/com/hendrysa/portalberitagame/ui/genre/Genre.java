@@ -1,9 +1,12 @@
 package com.hendrysa.portalberitagame.ui.genre;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +15,8 @@ import com.hendrysa.portalberitagame.AdapterRecycler;
 import com.hendrysa.portalberitagame.JSONParser;
 import com.hendrysa.portalberitagame.ModelRecycler;
 import com.hendrysa.portalberitagame.R;
+import com.hendrysa.portalberitagame.ui.search.Search;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
@@ -30,6 +35,7 @@ public class Genre extends AppCompatActivity {
 
     String platform, genre;
     TextView txt_platform_genre;
+    ImageView btn_search;
     String url = "http://hendrysa.ga:443/project/uasandroid/genre.php";
 
     @Override
@@ -49,6 +55,16 @@ public class Genre extends AppCompatActivity {
         genre = getIntent().getStringExtra("genre");
         txt_platform_genre = findViewById(R.id.txt_platform_genre);
         txt_platform_genre.setText(platform + " : " + genre);
+
+        btn_search = findViewById(R.id.search);
+
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Search.class);
+                startActivity(i);
+            }
+        });
 
         new fetchdata().execute();
     }

@@ -21,6 +21,7 @@ import com.hendrysa.portalberitagame.ModelRecycler;
 import com.hendrysa.portalberitagame.R;
 import com.hendrysa.portalberitagame.Session;
 import com.hendrysa.portalberitagame.ui.platform.Platform;
+import com.hendrysa.portalberitagame.ui.search.Search;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
@@ -45,8 +46,8 @@ public class HomeFragment extends Fragment {
     ModelRecycler modelRecycler;
     AdapterRecycler adapterRecycler;
 
-    ImageView btn_playstation, btn_pc, btn_nintendo, btn_xbox;
-    String url = "http://hendrysa.ga:443/project/uasandroid/mostview.php";
+    ImageView btn_playstation, btn_pc, btn_nintendo, btn_xbox, btn_search;
+    String url = "http://hendrysa.ga:443/project/uasandroid/new.php";
 
     private Session session;
 
@@ -79,6 +80,7 @@ public class HomeFragment extends Fragment {
         btn_pc = view.findViewById(R.id.btn_pc);
         btn_xbox = view.findViewById(R.id.btn_xbox);
         btn_playstation = view.findViewById(R.id.btn_playstation);
+        btn_search = view.findViewById(R.id.search);
 
         btn_playstation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +114,14 @@ public class HomeFragment extends Fragment {
                 startActivity(i);
             }
         });
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), Search.class);
+                startActivity(i);
+            }
+        });
+
         new fetchdata().execute();
     }
     //Carousel ImageListener
